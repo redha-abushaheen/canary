@@ -1,3 +1,4 @@
+
 {{- if .Values.serviceMonitor.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -5,10 +6,12 @@ metadata:
   name: {{ .Release.Name }}-main-servicemonitor
   labels:
     app: {{ .Release.Name }}
+    release: prometheus
 spec:
   selector:
     matchLabels:
       app: {{ .Release.Name }}
+      release: prometheus
   endpoints:
   - port: http
     path: /metrics
@@ -21,10 +24,12 @@ metadata:
   name: {{ .Release.Name }}-canary-servicemonitor
   labels:
     app: {{ .Release.Name }}-canary
+    release: prometheus
 spec:
   selector:
     matchLabels:
       app: {{ .Release.Name }}-canary
+      release: prometheus
   endpoints:
   - port: http
     path: /metrics

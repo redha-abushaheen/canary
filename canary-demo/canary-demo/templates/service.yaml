@@ -4,6 +4,7 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
+    release: prometheus
 spec:
   selector:
     app: {{ .Release.Name }}
@@ -21,6 +22,7 @@ metadata:
   name: {{ .Release.Name }}-canary
   labels:
     app: {{ .Release.Name }}-canary
+    release: prometheus
 spec:
   selector:
     app: {{ .Release.Name }}-canary
